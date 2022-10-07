@@ -14,21 +14,22 @@ public class Button : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (IsInContact = true && Input.GetMouseButtonDown(0))
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("www");
-            //Destroy(col.gameObject);
+            Destroy(collision.gameObject);
         }
     }
 
-    void OnTriggerStay2D(Collider2D col)
+    void OnTriggerStay2D(Collider2D collision)
     {
-        IsInContact = true;
-        Debug.Log("aaa");
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("www");
-            Destroy(col.gameObject);
+            Destroy(collision.gameObject);
         }
     }
 
