@@ -5,11 +5,10 @@ using UnityEngine;
 public class Button : MonoBehaviour
 {
     bool IsInContact = false;
+    bool mouseIsOver = false;
+
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    GameObject lastTouched;
 
     // Update is called once per frame
     void Update()
@@ -19,22 +18,27 @@ public class Button : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (Input.GetMouseButtonDown(0))
+        if (collision.gameObject.tag == "CleanUp")
         {
-            Destroy(collision.gameObject);
-        }
-    }
-
-    void OnTriggerStay2D(Collider2D collision)
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Destroy(collision.gameObject);
+            lastTouched = collision.gameObject;
+            IsInContact = true;
         }
     }
 
     void OnTriggerExit2D(Collider2D col)
     {
-        IsInContact = false;
+        if (col.gameObject.tag == "CleanUp")
+        {
+            lastTouched = null;
+            IsInContact = false;
+        }
+    }
+
+    public void Clicked()
+    {
+        if (IsInContact && (lastTouched != null))
+        {
+            Destroy(lastTouched);
+        }
     }
 }

@@ -6,6 +6,7 @@ public class Spawner : MonoBehaviour
 {
     //Create a public array of objects to spawn, we will fill this up using the unity editor
     public GameObject[] objectToSpawn;
+    public Transform canvas;
 
     float timeToNextSpawn;   //Tracks how long we should wait before spawning a new object
     float timeSinceLastSpawn = 0.0f;  //Tracks the time since we last spawned something
@@ -29,7 +30,7 @@ public class Spawner : MonoBehaviour
         {
            int selection = Random.Range(0, objectToSpawn.Length);
 
-            Instantiate(objectToSpawn[selection], transform.position, Quaternion.identity);
+            Instantiate(objectToSpawn[selection], transform.position, Quaternion.identity).transform.parent = canvas;
 
             timeToNextSpawn = Random.Range(minSpawnTime, maxSpawnTime);
             timeSinceLastSpawn = 0.0f;
