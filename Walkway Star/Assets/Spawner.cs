@@ -5,6 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     //Create a public array of objects to spawn, we will fill this up using the unity editor
+    public Transform parent;
     public GameObject[] objectToSpawn;
     public Transform canvas;
 
@@ -30,7 +31,7 @@ public class Spawner : MonoBehaviour
         {
            int selection = Random.Range(0, objectToSpawn.Length);
 
-            Instantiate(objectToSpawn[selection], transform.position, Quaternion.identity).transform.parent = canvas;
+            Instantiate(objectToSpawn[selection], transform.position, Quaternion.identity, parent);
 
             timeToNextSpawn = Random.Range(minSpawnTime, maxSpawnTime);
             timeSinceLastSpawn = 0.0f;
