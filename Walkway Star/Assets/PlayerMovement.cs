@@ -27,4 +27,14 @@ public class PlayerMovement : MonoBehaviour
 
         }
     }
+
+    public void Move()
+    {
+        transform.position += transform.forward * Time.deltaTime * movementSpeed;
+    }
+
+    public void Rotate(int direction = 1)
+    {
+        transform.Rotate(0, direction * 90, 0);
+    }
 }

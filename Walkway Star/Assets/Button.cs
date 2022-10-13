@@ -40,6 +40,7 @@ public class Button : MonoBehaviour
         {
             Destroy(lastTouched);
             FindObjectOfType<ScoreBoard>().AddPoint();
+            FindObjectOfType<PlayerMovement>().Move();
         }
     }
 }
