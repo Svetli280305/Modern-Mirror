@@ -39,6 +39,7 @@ public class Button : MonoBehaviour
         if (IsInContact && (lastTouched != null))
         {
             Destroy(lastTouched);
+            FindObjectOfType<ScoreBoard>().AddPoint();
         }
     }
 }
