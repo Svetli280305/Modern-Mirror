@@ -6,6 +6,7 @@ public class Button : MonoBehaviour
 {
     bool IsInContact = false;
     bool mouseIsOver = false;
+    public bool canFall = false;
 
     // Start is called before the first frame update
     GameObject lastTouched;
@@ -31,6 +32,19 @@ public class Button : MonoBehaviour
         {
             lastTouched = null;
             IsInContact = false;
+            if (!canFall) return;
+            if (FindObjectOfType<GameManager>().destroyed.Contains(col.gameObject.GetInstanceID())) return;
+            PlayerMovement PM = FindObjectOfType<PlayerMovement>();
+            if (PM.stumbling)
+            {
+                // fall
+                Debug.Log("fall");
+                StartCoroutine(PM.Fall());
+            }
+            else
+            {
+                StartCoroutine(PM.Stumble());
+            }
         }
     }
 
@@ -38,6 +52,7 @@ public class Button : MonoBehaviour
     {
         if (IsInContact && (lastTouched != null))
         {
+            FindObjectOfType<GameManager>().destroyed.Add(lastTouched.GetInstanceID());
             Destroy(lastTouched);
             FindObjectOfType<ScoreBoard>().AddPoint();
             FindObjectOfType<PlayerMovement>().Move();

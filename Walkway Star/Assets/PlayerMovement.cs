@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class PlayerMovement : MonoBehaviour
     public float movementSpeed = 5.0f;
     public float clockwise = 1000.0f;
     public float counterClockwise = -5.0f;
+
+    public bool fallen = false;
+    public bool stumbling = false;
 
     void Start()
     {
@@ -30,11 +34,36 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move()
     {
-        transform.position += transform.forward * Time.deltaTime * movementSpeed;
+        if (fallen) return;
+        transform.position += transform.forward * movementSpeed * 0.1f;
     }
 
     public void Rotate(int direction = 1)
     {
         transform.Rotate(0, direction * 90, 0);
+    }
+
+    public IEnumerator Stumble()
+    {
+        stumbling = true;
+        Debug.Log("started stumbling");
+
+        yield return new WaitForSeconds(1.0f);
+
+        if (!fallen)
+        {
+            Debug.Log("finished stumbling");
+        }
+        stumbling = false;
+    }
+
+
+    public IEnumerator Fall()
+    {
+        fallen = true;
+
+        yield return new WaitForSeconds(3.0f);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

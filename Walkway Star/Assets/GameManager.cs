@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject pauseMenu;
     public bool paused = false;
+    public List<int> destroyed = new List<int>();
 
     void Update()
     {
