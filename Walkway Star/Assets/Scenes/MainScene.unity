@@ -7991,8 +7991,8 @@ MonoBehaviour:
   objectToSpawn:
   - {fileID: 5938352199766386405, guid: acb71c6ec714a2843bce85431ee98580, type: 3}
   canvas: {fileID: 697877967}
-  minSpawnTime: 0.5
-  maxSpawnTime: 3
+  minSpawnTime: 1
+  maxSpawnTime: 5
 --- !u!4 &471078312
 Transform:
   m_ObjectHideFlags: 0
@@ -8811,8 +8811,8 @@ MonoBehaviour:
   objectToSpawn:
   - {fileID: 5938352199766386405, guid: acb71c6ec714a2843bce85431ee98580, type: 3}
   canvas: {fileID: 697877967}
-  minSpawnTime: 0.5
-  maxSpawnTime: 3
+  minSpawnTime: 1
+  maxSpawnTime: 5
 --- !u!4 &498922990
 Transform:
   m_ObjectHideFlags: 0
@@ -20768,8 +20768,8 @@ MonoBehaviour:
   objectToSpawn:
   - {fileID: 5938352199766386405, guid: acb71c6ec714a2843bce85431ee98580, type: 3}
   canvas: {fileID: 697877967}
-  minSpawnTime: 0.5
-  maxSpawnTime: 3
+  minSpawnTime: 1
+  maxSpawnTime: 5
 --- !u!4 &1086250907
 Transform:
   m_ObjectHideFlags: 0
@@ -23815,8 +23815,8 @@ MonoBehaviour:
   objectToSpawn:
   - {fileID: 5938352199766386405, guid: acb71c6ec714a2843bce85431ee98580, type: 3}
   canvas: {fileID: 697877967}
-  minSpawnTime: 0.5
-  maxSpawnTime: 3
+  minSpawnTime: 1
+  maxSpawnTime: 5
 --- !u!4 &1267959156
 Transform:
   m_ObjectHideFlags: 0
