@@ -15,11 +15,18 @@ public class MainMenu : MonoBehaviour
         volumeSlider.value = PlayerPrefs.GetFloat("Volume");
         volumeNumberText.text = $"{Mathf.Round(volumeSlider.value * 10) / 10}";
     }
-    public void PlayGame()
+    public void Level1()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-
+    public void Leve2()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+    }
+    public void Level3()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
+    }
     public void QuitGame()
     {
         Application.Quit();

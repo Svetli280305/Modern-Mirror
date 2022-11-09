@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
+    public int scene;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,6 @@ public class SceneChanger : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(scene);
     }
 }

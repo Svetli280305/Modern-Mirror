@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
+    public Animator anim;
 
     public float movementSpeed = 5.0f;
     public float clockwise = 1000.0f;
@@ -36,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (fallen) return;
         transform.position += transform.forward * movementSpeed * 0.1f;
+        StartCoroutine(MoveAnim());
     }
 
     public void Rotate(int direction = 1)
@@ -43,10 +45,18 @@ public class PlayerMovement : MonoBehaviour
         transform.Rotate(0, direction * 90, 0);
     }
 
+    public IEnumerator MoveAnim()
+    {
+        anim.SetFloat("Speed", 1.0f);
+        yield return new WaitForSeconds(0.5f);
+        anim.SetFloat("Speed", 0.0f);
+    }
+
     public IEnumerator Stumble()
     {
         stumbling = true;
         Debug.Log("started stumbling");
+        anim.SetTrigger("Stumble");
 
         yield return new WaitForSeconds(1.0f);
 
@@ -61,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
     public IEnumerator Fall()
     {
         fallen = true;
-
+        anim.SetTrigger("Fall");
         yield return new WaitForSeconds(3.0f);
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

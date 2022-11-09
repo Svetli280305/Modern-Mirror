@@ -1,0 +1,22 @@
+print "Starting maya loading and fbx conversion \n";
+	
+if (`file -q -exists "C:/Users/SYOTOV~1/MODERN~1/WALKWA~1/Assets/spaker.mb"`)
+{		
+	file -o "C:/Users/SYOTOV~1/MODERN~1/WALKWA~1/Assets/spaker.mb";
+	FBXExportEmbeddedTextures -v false;
+	// FBXExportHardEdges -v true;
+	FBXExportApplyConstantKeyReducer -v false;
+	FBXExportShowUI -v false;
+
+	print "Before fbx export\n";
+	FBXExport -f "C:/Users/SYOTOV~1/MODERN~1/WALKWA~1/Temp/ExportedFBXFile.fbx";
+	print "after fbx export\n";
+}
+else
+	print "Could not open Maya file.";
+
+sysFile -delete "C:/Users/SYOTOV~1/MODERN~1/WALKWA~1/Temp/CommandPipe";
+
+$donepipeKill = `fopen "C:/Users/SYOTOV~1/MODERN~1/WALKWA~1/Temp/SyncPipeKill" "w"`;
+fwrite $donepipeKill "Done";
+fclose $donepipeKill;
